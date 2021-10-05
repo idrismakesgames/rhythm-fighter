@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,7 +12,6 @@ public class Player : MonoBehaviour
     public float dashFriction;
     public float dashTime;
     public bool isDashing;
-    
     
     private Rigidbody2D _rigidBody;
     private float _speed;
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour
 
     void InitializeSpeedValues()
     {
-        _velocity = new Vector2(0, 0);
+         _velocity = new Vector2(0, 0);
         _speed = speed;
         _acceleration = acceleration;
         _friction = friction;
