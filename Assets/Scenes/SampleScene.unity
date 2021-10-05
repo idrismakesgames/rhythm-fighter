@@ -265,12 +265,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioBpm: 89
   beatInterval: 1
+  audioLatency: 0.01
   player: {fileID: 2076948781}
   spriteArray:
   - {fileID: 21300000, guid: 68308ef478c79444483436155f264f92, type: 3}
   - {fileID: 21300000, guid: 4f627fd27e2c36343af8a530c8f97edb, type: 3}
   - {fileID: 21300000, guid: a776cfcbb7bf4ea42bc29e3b0ae7e50f, type: 3}
   - {fileID: 21300000, guid: 222001558b6512643bbb6f266b58eae2, type: 3}
+  timeChecker: 0
+  startDelay: 30
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

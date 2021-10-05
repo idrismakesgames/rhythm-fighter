@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public float audioBpm = 120f;
     public int beatInterval = 1;
+    public float audioLatency = 0.02f;
     public GameObject player;
     public Sprite[] spriteArray;
 
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
     private int _flashCounter;
     private int _spriteCounter;
 
+    public bool timeChecker;
+    public int startDelay = 30;
+
     void Start()
     {
         _audioTheme = GetComponent<AudioSource>();
@@ -24,20 +28,33 @@ public class GameManager : MonoBehaviour
         _interval8 = ((60f / audioBpm) / 8);
 
         Application.targetFrameRate = 60;
-        _audioTheme.Play(0);
+
     }
 
     void Update()
     {
-        if (!_firstTimeAddition) CheckStartDelay();
-        IncreaseBeatCounter();
-        if (_remainder < Time.deltaTime) FlashBeat();
+        if (startDelay > 0)
+        {
+            startDelay--;
+            if (startDelay == 0)
+            {
+                _audioTheme.Play(0);
+            }
+            return;
+        }
+        else
+        {
+            if (!_firstTimeAddition) CheckStartDelay();
+            IncreaseBeatCounter();
+            if (_remainder < Time.deltaTime) FlashBeat();
+        }
+
     }
 
     #region Rhythm / Beat Methods
     void CheckStartDelay()
     {
-        _beatCounter -= _audioTheme.time;
+        _beatCounter -= _audioTheme.time + audioLatency;
         _firstTimeAddition = true;
     }
 
@@ -60,6 +77,12 @@ public class GameManager : MonoBehaviour
             || (beatInterval == 8))
         {
             CyclePlayerSprite();
+            if (!timeChecker)
+            {
+                timeChecker = true;
+                Debug.Log("time: " + _audioTheme.time);
+            }
+ 
         }
     }
 
