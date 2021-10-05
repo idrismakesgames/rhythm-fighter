@@ -1,5 +1,5 @@
+
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private float _horizontalInput;
     private float _verticalInput;
     private float _dashTimer;
-    
+
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     void GetInput()
     {
         if (Input.GetButtonDown("Fire1") && !isDashing) SetStartsDashVariables();
-        Debug.Log("happening");
+
         _horizontalInput = 0;
         _verticalInput = 0;
 

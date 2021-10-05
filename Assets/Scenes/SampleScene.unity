@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 16856394}
   - component: {fileID: 16856393}
   - component: {fileID: 16856395}
+  - component: {fileID: 16856396}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -153,7 +154,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2cd0245cc3e3cc4682652b1c7dfba9c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -249,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &16856395
 MonoBehaviour:
@@ -265,14 +266,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioBpm: 89
   beatInterval: 1
-  audioLatency: 0.01
-  player: {fileID: 2076948781}
-  spriteArray:
-  - {fileID: 21300000, guid: 68308ef478c79444483436155f264f92, type: 3}
-  - {fileID: 21300000, guid: 4f627fd27e2c36343af8a530c8f97edb, type: 3}
-  - {fileID: 21300000, guid: a776cfcbb7bf4ea42bc29e3b0ae7e50f, type: 3}
-  - {fileID: 21300000, guid: 222001558b6512643bbb6f266b58eae2, type: 3}
+  audioLatency: 0.05
   startDelay: 30
+--- !u!114 &16856396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16856392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4509e736a607dd8498fe2e0386138874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +575,7 @@ Transform:
   - {fileID: 1805392302}
   - {fileID: 1887215197}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596882008
 GameObject:
@@ -756,7 +763,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1805392301
 GameObject:
@@ -936,6 +943,7 @@ GameObject:
   - component: {fileID: 2076948782}
   - component: {fileID: 2076948785}
   - component: {fileID: 2076948784}
+  - component: {fileID: 2076948786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1007,7 +1015,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2076948784
 MonoBehaviour:
@@ -1052,3 +1060,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2076948786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076948781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb482da2d4f7b849998a0dda9617b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteArray:
+  - {fileID: 21300000, guid: 68308ef478c79444483436155f264f92, type: 3}
+  - {fileID: 21300000, guid: 4f627fd27e2c36343af8a530c8f97edb, type: 3}
+  - {fileID: 21300000, guid: a776cfcbb7bf4ea42bc29e3b0ae7e50f, type: 3}
+  - {fileID: 21300000, guid: 222001558b6512643bbb6f266b58eae2, type: 3}

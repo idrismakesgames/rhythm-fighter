@@ -5,36 +5,30 @@ public class GameManager : MonoBehaviour
     public float audioBpm = 120f;
     public int beatInterval = 1;
     public float audioLatency = 0.02f;
-    public GameObject player;
-    public Sprite[] spriteArray;
-
+    public int startDelay = 30;
+    
     private AudioSource _audioTheme;
-    private SpriteRenderer _playerSprite;
     private float _interval8;
-
-    private float _beatCounter = -0.00f; // Add latency delay. Will need Latency Tester.
+    private float _beatCounter = -0.00f; 
     private float _remainder;
     private bool _firstTimeAddition;
     private int _flashCounter;
-    private int _spriteCounter;
-
-    public int startDelay = 30;
 
     void Start()
     {
         _audioTheme = GetComponent<AudioSource>();
-        _playerSprite = player.GetComponent<SpriteRenderer>();
         _interval8 = ((60f / audioBpm) / 8);
-
         Application.targetFrameRate = 60;
-
     }
 
     void Update()
     {
-        if (startDelay > 0) startDelay--;
-        if (startDelay == 0) _audioTheme.Play(0);
-        if (startDelay == 0)
+        if (startDelay > 0)
+        {
+            startDelay--;
+            if (startDelay == 0) _audioTheme.Play(0);
+        } 
+        else
         {
             if (!_firstTimeAddition) CheckStartDelay();
             IncreaseBeatCounter();
@@ -67,17 +61,8 @@ public class GameManager : MonoBehaviour
             || (beatInterval == 4 && (_flashCounter % 2 == 1))
             || (beatInterval == 8))
         {
-            CyclePlayerSprite();
- 
+            GameEvents.Current.BeatHit();
         }
-    }
-
-    void CyclePlayerSprite()
-    {
-        if (_spriteCounter < 3) _spriteCounter++;
-        else _spriteCounter = 0;
-        
-        _playerSprite.sprite = spriteArray[_spriteCounter];
     }
     #endregion
 }
