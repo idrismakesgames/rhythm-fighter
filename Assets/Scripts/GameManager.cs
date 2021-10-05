@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     #region Rhythm / Beat Methods
     void CheckStartDelay()
     {
-        Debug.Log(_audioTheme.time);
         _beatCounter -= _audioTheme.time;
         _firstTimeAddition = true;
     }

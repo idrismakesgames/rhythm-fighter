@@ -537,7 +537,8 @@ MonoBehaviour:
   speed: 1
   acceleration: 0.08
   friction: 0.05
-  analogDeadzone: 0.25
+  turnSpeed: 18
+  analogDeadzone: 0.1
 --- !u!50 &2076948785
 Rigidbody2D:
   serializedVersion: 4
