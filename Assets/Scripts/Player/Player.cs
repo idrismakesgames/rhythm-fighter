@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -7,22 +8,32 @@ public class Player : MonoBehaviour
     public float friction;
     public float turnSpeed;
     public float analogDeadzone;
-        
+    public float dashSpeed;
+    public float dashAcceleration;
+    public float dashFriction;
+    public float dashTime;
+    public bool isDashing;
+    
+    
     private Rigidbody2D _rigidBody;
+    private float _speed;
     private Vector2 _velocity;
+    private float _acceleration;
+    private float _friction;
     private float _horizontalInput;
     private float _verticalInput;
-    private float _direction;
+    private float _dashTimer;
     
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _velocity = new Vector2(0, 0);
+        InitializeSpeedValues();
     }
 
     void Update()
     {
-        GetInput();
+        if (!isDashing) GetInput();
+        else DepleteDash();
         CalculateMovement();
     }
 
@@ -32,8 +43,19 @@ public class Player : MonoBehaviour
     }
 
     #region Movement Methods for Player
+
+    void InitializeSpeedValues()
+    {
+        _velocity = new Vector2(0, 0);
+        _speed = speed;
+        _acceleration = acceleration;
+        _friction = friction;
+    }
+    
     void GetInput()
     {
+        if (Input.GetButtonDown("Fire1") && !isDashing) SetStartsDashVariables();
+        Debug.Log("happening");
         _horizontalInput = 0;
         _verticalInput = 0;
 
@@ -52,17 +74,17 @@ public class Player : MonoBehaviour
         var veticalSpeed = _velocity.y;
         
         if (MyMethods.Sign(horizontalSpeed) != MyMethods.Sign(_horizontalInput)) {
-            horizontalSpeed = Mathf.MoveTowards(horizontalSpeed, 0, friction);
+            horizontalSpeed = Mathf.MoveTowards(horizontalSpeed, 0, _friction);
         }
-        horizontalSpeed += acceleration * _horizontalInput;
+        horizontalSpeed += _acceleration * _horizontalInput;
         
         if (MyMethods.Sign(veticalSpeed) != MyMethods.Sign(_verticalInput)) {
-            veticalSpeed = Mathf.MoveTowards(veticalSpeed, 0, friction);
+            veticalSpeed = Mathf.MoveTowards(veticalSpeed, 0, _friction);
         }
-        veticalSpeed += acceleration * _verticalInput;
+        veticalSpeed += _acceleration * _verticalInput;
 
         _velocity = new Vector2(horizontalSpeed,veticalSpeed);
-        _velocity = Vector2.ClampMagnitude(_velocity, speed);
+        _velocity = Vector2.ClampMagnitude(_velocity, _speed);
     }
 
     void ApplyMovementAndRotation()
@@ -81,6 +103,32 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, pointRotation, turnSpeed * Time.deltaTime);
         }
+    }
+    #endregion
+    
+    #region Dashing Methods
+    void SetStartsDashVariables()
+    {
+        isDashing = true;
+        _dashTimer = dashTime;
+        _speed = dashSpeed;
+        _acceleration = dashAcceleration;
+        _friction = dashFriction;
+    }
+    
+    void SetEndDashVariables()
+    {
+        isDashing = false;
+        _dashTimer = 0;
+        _speed = speed;
+        _acceleration = acceleration;
+        _friction = friction;
+    }
+
+    void DepleteDash()
+    {
+        _dashTimer -= Time.deltaTime;
+        if (_dashTimer <= 0) SetEndDashVariables();
     }
     #endregion
 }

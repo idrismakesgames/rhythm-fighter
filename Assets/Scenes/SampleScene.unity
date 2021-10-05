@@ -272,7 +272,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4f627fd27e2c36343af8a530c8f97edb, type: 3}
   - {fileID: 21300000, guid: a776cfcbb7bf4ea42bc29e3b0ae7e50f, type: 3}
   - {fileID: 21300000, guid: 222001558b6512643bbb6f266b58eae2, type: 3}
-  timeChecker: 0
   startDelay: 30
 --- !u!1 &519420028
 GameObject:
@@ -547,7 +546,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505789400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffb5e3e348484054a8b9e0b7682f4119, type: 3}
   m_Name: 
@@ -1023,10 +1022,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  acceleration: 0.08
-  friction: 0.05
+  acceleration: 0.1
+  friction: 0.075
   turnSpeed: 18
   analogDeadzone: 0.1
+  dashSpeed: 15
+  dashAcceleration: 0.75
+  dashFriction: 1
+  dashTime: 0.2
+  isDashing: 0
 --- !u!50 &2076948785
 Rigidbody2D:
   serializedVersion: 4

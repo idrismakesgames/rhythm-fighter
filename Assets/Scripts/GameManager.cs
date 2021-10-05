@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     private int _flashCounter;
     private int _spriteCounter;
 
-    public bool timeChecker;
     public int startDelay = 30;
 
     void Start()
@@ -33,22 +32,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (startDelay > 0)
-        {
-            startDelay--;
-            if (startDelay == 0)
-            {
-                _audioTheme.Play(0);
-            }
-            return;
-        }
-        else
+        if (startDelay > 0) startDelay--;
+        if (startDelay == 0) _audioTheme.Play(0);
+        if (startDelay == 0)
         {
             if (!_firstTimeAddition) CheckStartDelay();
             IncreaseBeatCounter();
             if (_remainder < Time.deltaTime) FlashBeat();
         }
-
     }
 
     #region Rhythm / Beat Methods
@@ -77,11 +68,6 @@ public class GameManager : MonoBehaviour
             || (beatInterval == 8))
         {
             CyclePlayerSprite();
-            if (!timeChecker)
-            {
-                timeChecker = true;
-                Debug.Log("time: " + _audioTheme.time);
-            }
  
         }
     }
