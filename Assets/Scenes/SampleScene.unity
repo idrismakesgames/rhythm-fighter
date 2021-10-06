@@ -154,7 +154,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2cd0245cc3e3cc4682652b1c7dfba9c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 1596882010}
   - component: {fileID: 1596882009}
   - component: {fileID: 1596882011}
+  - component: {fileID: 1596882012}
   m_Layer: 0
   m_Name: Enemy Zag
   m_TagString: Untagged
@@ -682,6 +683,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1596882012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596882008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb4d9760e2e82e428fd6543bc53f39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2076948781}
+  stopDistance: 0.6
+  speed: 0.75
+  acceleration: 0.08
+  friction: 0.05
+  turnSpeed: 18
 --- !u!1 &1722701908
 GameObject:
   m_ObjectHideFlags: 0
