@@ -1059,6 +1059,7 @@ MonoBehaviour:
   dashFriction: 1
   dashTime: 0.2
   isDashing: 0
+  dashEffect: {fileID: 7846291143248899207, guid: 3d470ed0c8f77c6448a6b96d1ecd12e6, type: 3}
 --- !u!50 &2076948785
 Rigidbody2D:
   serializedVersion: 4

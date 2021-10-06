@@ -7,12 +7,12 @@ public class Player : MonoBehaviour
     public float friction;
     public float turnSpeed;
     public float analogDeadzone;
+    public GameObject dashEffect;
     public float dashSpeed;
     public float dashAcceleration;
     public float dashFriction;
     public float dashTime;
-    public bool isDashing;
-    
+
     private Rigidbody2D _rigidBody;
     private float _speed;
     private Vector2 _velocity;
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private float _friction;
     private float _horizontalInput;
     private float _verticalInput;
+    private bool _isDashing;
     private float _dashTimer;
 
     void Start()
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (!isDashing) GetInput();
+        if (!_isDashing) GetInput();
         else DepleteDash();
         CalculateMovement();
     }
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
     
     void GetInput()
     {
-        if (Input.GetButtonDown("Fire1") && !isDashing) SetStartsDashVariables();
+        if (Input.GetButtonDown("Fire1") && !_isDashing) SetStartsDashVariables();
 
         _horizontalInput = 0;
         _verticalInput = 0;
@@ -107,16 +108,19 @@ public class Player : MonoBehaviour
     #region Dashing Methods
     void SetStartsDashVariables()
     {
-        isDashing = true;
+        _isDashing = true;
         _dashTimer = dashTime;
         _speed = dashSpeed;
         _acceleration = dashAcceleration;
         _friction = dashFriction;
+        
+        var playerTransform = transform; 
+        Instantiate(dashEffect, playerTransform.position, playerTransform.rotation); // * Quaternion.Euler(0, 0, 90);
     }
     
     void SetEndDashVariables()
     {
-        isDashing = false;
+        _isDashing = false;
         _dashTimer = 0;
         _speed = speed;
         _acceleration = acceleration;

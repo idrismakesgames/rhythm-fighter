@@ -15,8 +15,8 @@ public class PlayerBeat : MonoBehaviour
 
     private void OnBeatHit()
     {
-        if (_spriteCounter < 3) _spriteCounter++;
-        else _spriteCounter = 0;
-        _playerSprite.sprite = spriteArray[_spriteCounter];
+        // if (_spriteCounter < 3) _spriteCounter++;
+        // else _spriteCounter = 0;
+        // _playerSprite.sprite = spriteArray[_spriteCounter];
     }
 }
