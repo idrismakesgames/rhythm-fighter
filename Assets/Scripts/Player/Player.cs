@@ -12,8 +12,10 @@ public class Player : MonoBehaviour
     public float dashAcceleration;
     public float dashFriction;
     public float dashTime;
+    
 
     private Rigidbody2D _rigidBody;
+    private TrailRenderer _trail;
     private float _speed;
     private Vector2 _velocity;
     private float _acceleration;
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _trail = GetComponent<TrailRenderer>();
         InitializeSpeedValues();
     }
 
@@ -113,7 +116,7 @@ public class Player : MonoBehaviour
         _speed = dashSpeed;
         _acceleration = dashAcceleration;
         _friction = dashFriction;
-        
+
         var playerTransform = transform; 
         Instantiate(dashEffect, playerTransform.position, playerTransform.rotation); // * Quaternion.Euler(0, 0, 90);
     }
