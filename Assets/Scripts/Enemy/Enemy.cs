@@ -29,8 +29,8 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ApplyMovement();
-        ApplyRotation();
+        // ApplyMovement();
+        // ApplyRotation();
     }
 
     #region Movement Methods for Enemy

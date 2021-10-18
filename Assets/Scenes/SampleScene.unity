@@ -965,6 +965,7 @@ GameObject:
   - component: {fileID: 2076948788}
   - component: {fileID: 2076948784}
   - component: {fileID: 2076948786}
+  - component: {fileID: 2076948789}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1032,7 +1033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076948781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.36, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1159,7 +1160,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.15
+  m_Time: 0.12
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1168,13 +1169,13 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.27026695
-        inSlope: -0.31783712
-        outSlope: -0.31783712
+        value: 0.28648335
+        inSlope: 0.029943245
+        outSlope: 0.029943245
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.12243902
+        outWeight: 0.14439024
       - serializedVersion: 3
         time: 1
         value: 0.05405034
@@ -1189,8 +1190,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.82756054, b: 0.990566, a: 0.5882353}
-      key1: {r: 1, g: 1, b: 1, a: 0.3137255}
+      key0: {r: 0, g: 0.82756054, b: 0.990566, a: 0.47058824}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1206,7 +1207,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 37008
+      atime1: 65535
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -1215,7 +1216,7 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
+      m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -1225,3 +1226,18 @@ TrailRenderer:
   m_MinVertexDistance: 0.05
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &2076948789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076948781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7418dc5a06b3c804aa53b1a4a4af16ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyObject: {fileID: 1596882008}
+  lineAngle: 7
+  lineAngle2: 32
