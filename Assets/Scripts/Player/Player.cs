@@ -38,6 +38,10 @@ public class Player : MonoBehaviour
         if (!_isDashing) GetInput();
         else DepleteDash();
         CalculateMovement();
+        
+        // Check collider
+        // if enemy
+        // kill player, trigger death particle in position
     }
 
     private void FixedUpdate()

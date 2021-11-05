@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public float acceleration;
     public float friction;
     public float turnSpeed;
+    public int minAngle;
+    public int maxAngle;
 
     public Vector3[] dashTargets;
     public GameObject dashEffect;
@@ -29,9 +31,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         InitializeSpeedValues();
-        FindDashTarget(transform.position, target.transform.GetChild(0), 1);
-        FindDashTarget(dashTargets[1], target.transform.GetChild(0), 2);
-        FindDashTarget(dashTargets[2], target.transform.GetChild(0), 3);
     }
 
     void Update()
@@ -53,7 +52,30 @@ public class Enemy : MonoBehaviour
     
     void GetInput()
     {
-        if (Input.GetButtonDown("Fire2") && !_isDashing) SetStartsDashVariables();
+        if (Input.GetButtonDown("Fire2") && !_isDashing && _targetNumber <= 4)
+        {
+            if (_targetNumber == 1 && dashTargets[1] == Vector3.zero)
+            {
+                // do just before beat
+                FindDashTarget(transform.position, target.transform.GetChild(0), 1);
+            }
+            if (_targetNumber == 2 && dashTargets[2] == Vector3.zero)
+            {
+                // do just before beat
+                FindDashTarget(dashTargets[1], target.transform.GetChild(0), 2);
+            }
+            if (_targetNumber == 3 && dashTargets[3] == Vector3.zero)
+            {
+                // dojust before beat
+                FindDashTarget(dashTargets[2], target.transform.GetChild(0), 3);
+            }
+            if (_targetNumber == 4 && dashTargets[4] == Vector3.zero)
+            {
+                // do just before beat
+                dashTargets[4] = target.transform.position;
+            }
+            SetStartsDashVariables();
+        }
     }
     
     #endregion
@@ -123,7 +145,7 @@ public class Enemy : MonoBehaviour
         _isDashing = false;
         _speed = speed;
         _acceleration = acceleration;
-        if (_targetNumber < 3) _targetNumber += 1;
+        if (_targetNumber < 4) _targetNumber += 1;
         _friction = friction;
     }
     #endregion
@@ -137,7 +159,7 @@ public class Enemy : MonoBehaviour
         var playerPosition = playerTransform.position;
         if (_negOrPos == 9) _negOrPos = Random.Range(0, 2);
         
-        var lineAngle = Random.Range(5, 45);
+        var lineAngle = Random.Range(minAngle, maxAngle);
         if (_negOrPos == 0) lineAngle = -lineAngle;
 
         var directionFromPlayerToEnemy = enemyPos - playerPosition;
